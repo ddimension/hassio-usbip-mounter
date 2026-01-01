@@ -15,7 +15,10 @@ mount_script="/usr/local/bin/mount_devices"
 
 bashio::log.info  "Stop devices"
 mount -o remount -t sysfs sysfs /sys
+mount -o proc -t proc proc /proc
 ls /sys
+ls /block
+lsmod
 bashio::log.info  "msg: $(ls /sys)"
 
 /sbin/modprobe vhci_hcd
