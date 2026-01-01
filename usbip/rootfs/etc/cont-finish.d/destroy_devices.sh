@@ -16,6 +16,7 @@ mount_script="/usr/local/bin/mount_devices"
 bashio::log.info  "Stop script"
 msg="$(/usr/sbin/usbip port)"
 bashio::log.info  "msg"
+bashio::log.info  "$(/sbin/lsmod)"
 
  
 exit
