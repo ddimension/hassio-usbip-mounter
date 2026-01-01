@@ -14,7 +14,7 @@ script_directory="/usr/local/bin"
 mount_script="/usr/local/bin/mount_devices"
 
 bashio::log.info  "Stop script"
-msg="$(/usr/bin/usbip port)"
+msg="$(/usr/sbin/usbip port)"
 bashio::log.info  "msg"
 
  
