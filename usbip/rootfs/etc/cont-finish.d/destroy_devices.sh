@@ -13,10 +13,10 @@ declare mount_script
 script_directory="/usr/local/bin"
 mount_script="/usr/local/bin/mount_devices"
 
-bashio::log.info  "Stop script"
+bashio::log.info  "Stop devices"
 msg="$(/usr/sbin/usbip port)"
-bashio::log.info  "msg"
-bashio::log.info  "$(/sbin/lsmod)"
+bashio::log.info  "msg: $msg"
+bashio::log.info  "lsmod: $(/sbin/lsmod)"
 
  
 exit
