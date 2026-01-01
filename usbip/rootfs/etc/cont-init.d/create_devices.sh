@@ -51,7 +51,7 @@ if ! bashio::fs.file_exists "${umount_script}"; then
   echo '/sbin/rmmod vhci-hcd || true' >> "${umount_script}"
   echo '/sbin/lsmod || true' >> "${umount_script}"
   echo 'mount || true' >> "${umount_script}"
-  echo 'ls / /dev || true' >> "${umount_script}"
+  #echo 'ls / /dev || true' >> "${umount_script}"
   #echo 'find /sys |grep vhci || true' >> "${umount_script}"
   #echo '/usr/sbin/usbip port' >> "${umount_script}"
   echo 'lsusb' >> "${umount_script}"

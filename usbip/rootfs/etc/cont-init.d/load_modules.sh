@@ -4,4 +4,5 @@
 # Load client kernel module
 # ==============================================================================
 
+/sbin/rmmod vhci-hcd
 /sbin/modprobe vhci-hcd
