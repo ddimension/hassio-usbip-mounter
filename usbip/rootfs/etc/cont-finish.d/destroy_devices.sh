@@ -14,6 +14,7 @@ script_directory="/usr/local/bin"
 mount_script="/usr/local/bin/mount_devices"
 
 bashio::log.info  "Stop devices"
+/sbin/modprobe vhci_hcd
 msg="$(/usr/sbin/usbip port)"
 bashio::log.info  "msg: $msg"
 bashio::log.info  "lsmod: $(/sbin/lsmod)"
