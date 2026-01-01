@@ -5,4 +5,5 @@
 # ==============================================================================
 
 /sbin/rmmod vhci-hcd || true
-/sbin/modprobe vhci-hcd
+/sbin/modprobe vhci-hcd || true
+/sbin/modprobe usbip_core || true
