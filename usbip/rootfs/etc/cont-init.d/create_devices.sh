@@ -47,5 +47,7 @@ if ! bashio::fs.file_exists "${umount_script}"; then
   echo '#!/command/with-contenv bashio' > "${umount_script}"
   echo 'set -x' >> "${umount_script}"
   echo 'mount -o remount -t sysfs sysfs /sys' >> "${umount_script}"
+  echo '/sbin/modprobe vhci-hcd || true' >> "${umount_script}"
+  echo '/sbin/lsmod || true' >> "${umount_script}"
   echo '/usr/sbin/usbip port' >> "${umount_script}" 
 fi
