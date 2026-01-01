@@ -38,6 +38,7 @@ if ! bashio::fs.file_exists "${mount_script}"; then
     bus_id=$(bashio::config "devices[${device}].bus_id")
     bashio::log.info "Adding device from server ${server_address} on bus ${bus_id}"
     echo "/usr/sbin/usbip --debug attach -r ${server_address} -b ${bus_id}" >> "${mount_script}"
+  echo 'lsusb' >> "${mount_script}"
   done
 fi
 
@@ -51,6 +52,7 @@ if ! bashio::fs.file_exists "${umount_script}"; then
   echo '/sbin/lsmod || true' >> "${umount_script}"
   echo 'mount || true' >> "${umount_script}"
   echo 'ls / /dev || true' >> "${umount_script}"
-  echo 'find /sys |grep vhci || true' >> "${umount_script}"
-  echo '/usr/sbin/usbip port' >> "${umount_script}" 
+  #echo 'find /sys |grep vhci || true' >> "${umount_script}"
+  #echo '/usr/sbin/usbip port' >> "${umount_script}"
+  echo 'lsusb' >> "${umount_script}"
 fi
