@@ -12,6 +12,7 @@ declare mount_script
 
 script_directory="/usr/local/bin"
 mount_script="/usr/local/bin/mount_devices"
+umount_script="/usr/local/bin/umount_devices"
 
 if ! bashio::fs.directory_exists "${script_directory}"; then
   bashio::log.info  "Creating script directory"
@@ -20,6 +21,10 @@ fi
 
 if bashio::fs.file_exists "${mount_script}"; then
   rm "${mount_script}"
+fi
+
+if bashio::fs.file_exists "${umount_script}"; then
+  rm "${umount_script}"
 fi
 
 if ! bashio::fs.file_exists "${mount_script}"; then
@@ -34,4 +39,13 @@ if ! bashio::fs.file_exists "${mount_script}"; then
     bashio::log.info "Adding device from server ${server_address} on bus ${bus_id}"
     echo "/usr/sbin/usbip --debug attach -r ${server_address} -b ${bus_id}" >> "${mount_script}"
   done
+fi
+
+if ! bashio::fs.file_exists "${umount_script}"; then
+  touch ${umount_script}
+  chmod +x ${umount_script}
+  echo '#!/command/with-contenv bashio' > "${umount_script}"
+  echo 'set -x' >> "${umount_script}"
+  echo 'mount -o remount -t sysfs sysfs /sys' >> "${umount_script}"
+  echo '/usr/sbin/usbip port' >> "${umount_script}" 
 fi

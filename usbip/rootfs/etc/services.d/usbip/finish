@@ -5,6 +5,8 @@
 # ==============================================================================
 if [[ "${1}" -ne 0 ]] && [[ "${1}" -ne 256 ]]; then
   bashio::log.warning "usbip crashed, halting add-on"
+  ## Run the attach device script
+  /usr/local/bin/umount_devices
   /run/s6/basedir/bin/halt
 fi
 
